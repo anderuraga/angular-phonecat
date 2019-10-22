@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Comparador</h2>
+  <div class="row">
+    <div class="col-md-2">      
+        <ul class="list-group">
+          <li class="list-group-item" 
+              ng-repeat="phone in $ctrl.phones"
+              ng-click="$ctrl.selecionar(phone)">
+            <img ng-src="{{phone.imageUrl}}" class="responsive"/>
+            {{phone.name}}
+          </li>          
+        </ul>
+    </div>
+    <div class="col-md-5">
+      {{$ctrl.phone1}}
+    </div>
+    <div class="col-md-5">
+        {{$ctrl.phone2}}
+    </div>
+  </div>
+</div>

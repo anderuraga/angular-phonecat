@@ -91,3 +91,9 @@ h1 {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+
+img.responsive{
+  width: 100%;
+  height: auto;
+}
