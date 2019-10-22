@@ -11,6 +11,9 @@ angular.
         when('/phones/:phoneId', {
           template: '<phone-detail></phone-detail>'
         }).
+        when('/404', {
+          templateUrl: 'error.html'
+        }).
         otherwise('/phones');
     }
   ]);
