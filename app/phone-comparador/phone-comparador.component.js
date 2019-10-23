@@ -29,3 +29,35 @@ angular.
       }
     ]
   });
+
+  /**
+   * Detalle del Comparador
+   */
+  angular.
+  module('phoneComparador').
+  component('phoneComparadorDetalle', {
+    templateUrl: 'phone-comparador/phone-comparador-detalle.template.html',
+    bindings:{
+      mostrar : '=',
+      comparar : '='
+    },
+    controller: [
+      function PhoneComparadorDetalleController() {        
+
+        console.trace('PhoneComparadorDetalleController');
+        var self = this;
+
+        //self.p1 = this.phone1;
+
+        /*
+        this.$onChanges = function (changes) {
+          console.debug('cambia valor %o', changes);
+          self.p1 = changes.phone1.currentValue;
+        };
+        */
+
+
+
+      }
+    ]
+  });

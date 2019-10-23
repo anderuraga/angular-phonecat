@@ -37,17 +37,9 @@
 
     <!-- 3º columan -->
     <div class="col-md-5">
-        <div class="thumbnail">
-        <img ng-src="{{$ctrl.phone2.imageUrl}}" alt="{{$ctrl.phone2.id}}">
-            <div class="caption">
-              <h3>{{$ctrl.phone2.id}}</h3>
-              <p> {{$ctrl.phone2.snippet}}</p>    
-              <ul class="list-group">
-                  <li class="list-group-item">Flash {{$ctrl.phone2.storage.flash}} MB</li>
-                  <li class="list-group-item">Ram {{$ctrl.phone2.storage.ram}} MB</li>                
-              </ul>          
-            </div>
-        </div>    
+      
+      <phone-comparador-detalle mostrar="$ctrl.phone2" comparar="$ctrl.phone1"></phone-comparador-detalle>
+            
     </div>
 
   </div>
