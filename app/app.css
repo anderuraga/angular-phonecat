@@ -92,6 +92,10 @@ h1 {
   font-weight: bold;
 }
 
+.thumbnail img{
+  width: 150px;
+  height: auto;
+}
 
 img.responsive{
   width: 100%;

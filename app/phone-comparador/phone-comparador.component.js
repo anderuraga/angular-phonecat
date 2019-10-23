@@ -17,10 +17,14 @@ angular.
         self.phone2 = {};
         self.orderProp = 'age';
 
+       
+
         this.selecionar = function(phone){
           console.trace('seleccionado movil');
+          self.phone2 = self.phone1;
           self.phone1 = phone;
         }
+        // selecionar
 
       }
     ]
