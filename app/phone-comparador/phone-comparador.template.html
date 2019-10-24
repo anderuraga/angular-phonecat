@@ -16,30 +16,12 @@
 
     <!-- 2º columan -->
     <div class="col-md-5">
-        <div class="thumbnail">
-            <img ng-src="{{$ctrl.phone1.imageUrl}}" alt="{{$ctrl.phone1.id}}">
-            <div class="caption">
-              <h3>{{$ctrl.phone1.id}}</h3>
-              <p> {{$ctrl.phone1.snippet}}</p>              
-            </div>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    Flash {{$ctrl.phone1.storage.flash}} MB
-                    <span class="label label-{{ ($ctrl.phone1.storage.flash >= $ctrl.phone2.storage.flash)?'success':'danger' }}">{{ $ctrl.phone1.storage.flash - $ctrl.phone2.storage.flash}}</span>
-                </li>
-                <li class="list-group-item">
-                  Ram {{$ctrl.phone1.storage.ram}} MB
-                  <span class="label label-{{ ($ctrl.phone1.storage.ram >= $ctrl.phone2.storage.ram)?'success':'danger' }}">{{ $ctrl.phone1.storage.ram - $ctrl.phone2.storage.ram}}</span>
-                </li>                
-            </ul>
-          </div>     
+      <phone-comparador-detalle mostrar="$ctrl.phone1" comparar="$ctrl.phone2"></phone-comparador-detalle>   
     </div>
 
     <!-- 3º columan -->
-    <div class="col-md-5">
-      
-      <phone-comparador-detalle mostrar="$ctrl.phone2" comparar="$ctrl.phone1"></phone-comparador-detalle>
-            
+    <div class="col-md-5">      
+      <phone-comparador-detalle mostrar="$ctrl.phone2" comparar="$ctrl.phone1"></phone-comparador-detalle>            
     </div>
 
   </div>
