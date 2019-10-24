@@ -13,8 +13,8 @@ angular.
         var self = this;
 
         self.phones = Phone.query();
-        self.phone1 = {};
-        self.phone2 = {};
+        self.phone1 = undefined;
+        self.phone2 = undefined;
         self.orderProp = 'age';
 
        

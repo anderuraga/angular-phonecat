@@ -1,19 +1,27 @@
 <div class="thumbnail">
-    <img ng-src="{{$ctrl.mostrar.imageUrl}}" alt="{{$ctrl.mostrar.id}}">
-    <div class="caption">
-      <h3>{{$ctrl.mostrar.id}}</h3>
-      <p> {{$ctrl.mostrar.snippet}}</p>              
-    </div>
-    <ul class="list-group">      
-        <li class="list-group-item">
-            Flash <ip-compare v1="{{$ctrl.mostrar.storage.flash}}" v2="{{$ctrl.comparar.storage.flash}}" unidad="MB"></ip-compare>                   
-        </li>
-        <li class="list-group-item">
-          Ram <ip-compare v1="{{$ctrl.mostrar.storage.ram}}" v2="{{$ctrl.comparar.storage.ram}}" unidad="MB"></ip-compare>                   
-        </li>                    
-    </ul>
 
-    <button class="btn btn-primary btn-block" ng-click="$ctrl.comprar()">Comprar</button>
+    <p ng-if="!$ctrl.mostrar" class="text-danger">Selecciona un Telefono</p>
+    <img ng-if="!$ctrl.mostrar" src="img/telefono.png">
+
+    <div ng-if="$ctrl.mostrar">
+
+      <img ng-src="{{$ctrl.mostrar.imageUrl}}" alt="{{$ctrl.mostrar.id}}">
+      <div class="caption">
+        <h3>{{$ctrl.mostrar.id}}</h3>
+        <p> {{$ctrl.mostrar.snippet}}</p>              
+      </div>
+      <ul class="list-group">      
+          <li class="list-group-item">
+              Flash <ip-compare v1="{{$ctrl.mostrar.storage.flash}}" v2="{{$ctrl.comparar.storage.flash}}" unidad="MB"></ip-compare>                   
+          </li>
+          <li class="list-group-item">
+            Ram <ip-compare v1="{{$ctrl.mostrar.storage.ram}}" v2="{{$ctrl.comparar.storage.ram}}" unidad="MB"></ip-compare>                   
+          </li>                    
+      </ul>
+
+      <button class="btn btn-primary btn-block" ng-click="$ctrl.comprar()">Comprar</button>
+
+    </div>
 
   </div>   
 
