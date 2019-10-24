@@ -5,8 +5,8 @@ angular.
   module('phoneComparador').
   component('phoneComparador', {
     templateUrl: 'phone-comparador/phone-comparador.template.html',
-    controller: ['Phone',
-      function PhoneComparadorController(Phone) {        
+    controller: ['Phone', 'compraMovil', '$scope',
+      function PhoneComparadorController(Phone, compraMovil, $scope) {        
 
         console.trace('PhoneComparadorController');
 
@@ -26,6 +26,13 @@ angular.
         }
         // selecionar
 
+
+        $scope.$on("eventoCompra", function(event, data){
+
+            alert('eventoCompra en padre ' + data.telefono.id);
+
+        });
+
       }
     ]
   });
@@ -41,13 +48,18 @@ angular.
       mostrar : '=',
       comparar : '='
     },
-    controller: [
-      function PhoneComparadorDetalleController() {        
+    controller: ['compraMovil','$scope',
+      function PhoneComparadorDetalleController(compraMovil,$scope) {        
 
         console.trace('PhoneComparadorDetalleController');
         var self = this;
 
-        //self.p1 = this.phone1;
+        self.comprar = function(){
+          console.trace('click boton compra %o', self.mostrar  );
+          //compraMovil.setProducto(self.mostrar);
+          $scope.$emit("eventoCompra", { telefono: self.mostrar });
+
+        }
 
         /*
         this.$onChanges = function (changes) {
