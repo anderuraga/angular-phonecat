@@ -6,3 +6,4 @@ tmp
 .DS_Store
 .idea
 angular-phonecat-snapshots
+app/core/filters/filter.
