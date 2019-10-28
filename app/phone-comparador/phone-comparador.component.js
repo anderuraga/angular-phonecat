@@ -11,11 +11,11 @@ angular.
         console.trace('PhoneComparadorController');
 
         var self = this;
-        var filtro = {
-          "atributo": "",
-          "nombre": "",
+
+        self.filtro = {
+          "atributo": "ram",         
           "min": 0,
-          "max": 100
+          "max": 32000
         }
 
         //self.phones = Phone.query();
@@ -45,15 +45,15 @@ angular.
   });
 
   angular.module('phoneComparador').filter('filtroTelefonos', function () {
-    return function( items, attr, min, max){
-      console.log('filtroTelefonos attr=%s  min=%s max=%s', attr, min, max );
+    return function( items, filtroObject){
+      console.log('filtroTelefonos filtro=%o', filtroObject);
 
       if ( items ){
 
         return items.filter((telefono)=> {
-          let value = telefono.storage[attr];
-          console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
-          return value >= min && value <= max ;
+          let value = telefono.storage[filtroObject.atributo];
+          //console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
+          return value >= filtroObject.min && value <= filtroObject.max ;
         });
 
       }  

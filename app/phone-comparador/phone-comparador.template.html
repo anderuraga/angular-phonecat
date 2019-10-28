@@ -8,21 +8,25 @@
     <!-- 1º columan -->
     <div class="col-md-2">      
         <input type="search" ng-model="nombre" placeholder="Busca por nombre">
-        <select ng-model="filtro.atributo" ng-init="filtro.atributo='flash'">
+
+        
+        {{ $ctrl.filtro | json }}
+
+        <select ng-model="$ctrl.filtro.atributo">
           <option value="ram">RAM</option>
           <option value="flash">FLASH</option>
         </select>
 
         <br>
-        <label>MIN {{filtro.min}}</label>
-        <input type="range" ng-model="filtro.min" ng-init="filtro.min=0" step="512" max="2048" min="0">
+        <label>MIN {{$ctrl.filtro.min}}</label>
+        <input type="range" ng-model="$ctrl.filtro.min" step="512" max="2048" min="0">
 
-        <label>MAX {{filtro.max}}</label>
-        <input type="range" ng-model="filtro.max" ng-init="filtro.max=32000" step="512" max="32000" min="0">
+        <label>MAX {{$ctrl.filtro.max}}</label>
+        <input type="range" ng-model="$ctrl.filtro.max" step="512" max="32000" min="0">
 
         <ul class="list-group">
           <li class="list-group-item" 
-              ng-repeat="phone in $ctrl.phones | filter:nombre | filtroTelefonos:filtro.atributo:filtro.min:filtro.max"
+              ng-repeat="phone in $ctrl.phones | filter:nombre | filtroTelefonos:$ctrl.filtro"
               ng-click="$ctrl.selecionar(phone)">
             <img ng-src="{{phone.imageUrl}}" class="responsive"/>
             {{phone.name}}
