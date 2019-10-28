@@ -11,9 +11,15 @@ angular.
         console.trace('PhoneComparadorController');
 
         var self = this;
+        var filtro = {
+          "atributo": "",
+          "nombre": "",
+          "min": 0,
+          "max": 100
+        }
 
         //self.phones = Phone.query();
-        self.phones = {};
+        self.phones = [];
         self.phone1 = undefined;
         self.phone2 = undefined;
         self.orderProp = 'age';
@@ -37,6 +43,26 @@ angular.
       }
     ]
   });
+
+  angular.module('phoneComparador').filter('filtroTelefonos', function () {
+    return function( items, attr, min, max){
+      console.log('filtroTelefonos attr=%s  min=%s max=%s', attr, min, max );
+
+      if ( items ){
+
+        return items.filter((telefono)=> {
+          let value = telefono.storage[attr];
+          console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
+          return value >= min && value <= max ;
+        });
+
+      }  
+
+      // return items;
+    }
+  });
+
+
 
   /**
    * Detalle del Comparador
