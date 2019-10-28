@@ -1,0 +1,21 @@
+<h2>Nuevo Teléfono</h2>
+
+**TODO validacion de campos ***
+
+<div class="row">
+  <div class="col-md-6">
+      <form name="form" ng-submit="$ctrl.guardar()" novalidate>
+
+          <input type="text" ng-model="$ctrl.form.name" name="name" placeholder="Nombre">
+
+          <input type="text" ng-model="$ctrl.form.snippet" name="snippet" placeholder="Descripcion">
+        
+          <input type="submit" value="Crear" class="btn btn-primary">
+        
+        </form>
+  </div>
+  <div class="col-md-6">
+      <pre>{{ form | json }}</pre>
+  </div>
+</div>
+

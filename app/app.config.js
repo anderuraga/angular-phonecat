@@ -14,6 +14,9 @@ angular.
         when('/comparador', {
           template: '<phone-comparador></phone-comparador>'
         }).
+        when('/nuevo', {
+          template: '<phone-nuevo></phone-nuevo>'
+        }).
         when('/404', {
           templateUrl: 'error.html'
         }).

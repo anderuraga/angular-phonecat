@@ -19,6 +19,13 @@ angular.
         return $http.get(url);
       }
 
+      service.guardar = function( phone ){
+        let url = endpoint;
+        console.trace('POST ' + url);
+        return $http.post(url, phone );
+      }
+
+
       return service;
     }
   ]);
