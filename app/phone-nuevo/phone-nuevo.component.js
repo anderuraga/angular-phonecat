@@ -7,10 +7,26 @@ angular.
     templateUrl: 'phone-nuevo/phone-nuevo.template.html',
     controller: ['$routeParams', 'Phone', '$location',
       function PhoneNuevoController($routeParams, Phone, $location) {
-        var self = this;              
-        self.phone = {}; 
-        self.form = {};
+   
         console.trace('PhoneNuevoController');
+
+        var self = this;                     
+        self.form = {};
+
+        let id = $routeParams.phoneId;
+        if ( id  ) {   //buscar telefono por id
+
+          Phone.getById(id).then(
+            (res)=>{
+              console.debug('telefono encontrado');
+              self.form = res.data;
+            },
+            ()=>{
+              console.warn('telefono NO encontrado');
+            }
+          );
+
+        }
 
 
         self.guardar = function(){

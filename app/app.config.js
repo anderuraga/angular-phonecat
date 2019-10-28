@@ -14,7 +14,10 @@ angular.
         when('/comparador', {
           template: '<phone-comparador></phone-comparador>'
         }).
-        when('/nuevo', {
+        when('/nuevo/', {
+          template: '<phone-nuevo></phone-nuevo>'
+        }).
+        when('/editar/:phoneId', {
           template: '<phone-nuevo></phone-nuevo>'
         }).
         when('/404', {
