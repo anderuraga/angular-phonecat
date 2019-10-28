@@ -20,6 +20,9 @@ angular.
         when('/editar/:phoneId', {
           template: '<phone-nuevo></phone-nuevo>'
         }).
+        when('/carrito/', {
+          template: '<phone-compra></phone-compra>'
+        }).
         when('/404', {
           templateUrl: 'error.html'
         }).

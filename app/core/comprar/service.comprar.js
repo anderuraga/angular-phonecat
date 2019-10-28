@@ -1,14 +1,35 @@
 'use strict';
-  core.factory('compraMovil',
+
+angular.module('core.compra').factory('servicioCarrito',
+
     function() {
 
       return {
-        producto: null,
-        getProducto: function() {
-            return this.producto;
+
+        compras: new Map(),
+
+        getCompras: function() {
+            console.trace('getCompras');
+            return Array.from( this.compras.values() );
         },
-        setProducto: function(p) {
-            this.producto = p;
+        guardarCompra: function(compra) {
+            console.trace('guardarCompra %o', compra);
+
+            let c = this.compras.get( compra.id );    // buscamos si existe
+
+            if ( c ){           // existe
+
+              c.cantidad++;
+              // this.compras.set( c.id, c );
+
+            }else{                             // no existe, guardar en Map
+
+              this.compras.set( compra.id, //key
+                                compra )   //value
+            }
+
+
+
         }
 
       }; //end return

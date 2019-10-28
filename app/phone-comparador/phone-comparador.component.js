@@ -5,8 +5,8 @@ angular.
   module('phoneComparador').
   component('phoneComparador', {
     templateUrl: 'phone-comparador/phone-comparador.template.html',
-    controller: ['Phone', 'compraMovil', '$scope',
-      function PhoneComparadorController(Phone, compraMovil, $scope) {        
+    controller: ['Phone', 'servicioCarrito', '$scope',
+      function PhoneComparadorController(Phone, servicioCarrito, $scope) {        
 
         console.trace('PhoneComparadorController');
 
@@ -33,10 +33,18 @@ angular.
         }
         // selecionar
 
-
+        //recibimos evento del compoenten hijo
         $scope.$on("eventoCompra", function(event, data){
 
             alert('eventoCompra en padre ' + data.telefono.id);
+
+            let compra = {
+              "id": data.telefono.id,
+              "nombre": data.telefono.name,
+              "imagen": data.telefono.imageUrl,
+              "cantidad": 1
+            };
+            servicioCarrito.guardarCompra(compra);
 
         });
 
@@ -51,9 +59,13 @@ angular.
       if ( items ){
 
         return items.filter((telefono)=> {
-          let value = telefono.storage[filtroObject.atributo];
-          //console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
-          return value >= filtroObject.min && value <= filtroObject.max ;
+          if ( telefono.storage ){
+            let value = telefono.storage[filtroObject.atributo];
+            //console.debug("telefono=%s value=%s min%s max=%s", telefono.id, value, min, max );
+            return value >= filtroObject.min && value <= filtroObject.max ;
+          }else{
+            return true;
+          }  
         });
 
       }  
@@ -75,8 +87,8 @@ angular.
       mostrar : '=',
       comparar : '='
     },
-    controller: ['compraMovil','$scope',
-      function PhoneComparadorDetalleController(compraMovil,$scope) {        
+    controller: ['$scope',
+      function PhoneComparadorDetalleController($scope) {        
 
         console.trace('PhoneComparadorDetalleController');
         var self = this;
